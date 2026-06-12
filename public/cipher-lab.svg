@@ -15,6 +15,7 @@
   <circle cx="64" cy="64" r="48" fill="none" stroke="url(#accent)" stroke-width="6" />
 
   <path
+    transform="translate(0, -8)"
     d="M76 58a12 12 0 1 0-24 0v2h-6a4 4 0 0 0-4 4v24a4 4 0 0 0 4 4h36a4 4 0 0 0 4-4V64a4 4 0 0 0-4-4h-6zm-16 0a4 4 0 0 1 8 0v2h-8v-2z"
     fill="#f8fafc"
     opacity="0.92"

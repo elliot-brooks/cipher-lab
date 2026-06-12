@@ -48,6 +48,7 @@ task build
 
 ```bash
 task test
+# or: npx vitest run
 ```
 
 ### Preview the production build

@@ -1,0 +1,18 @@
+# https://taskfile.dev
+version: '3'
+
+tasks:
+  dev:
+    desc: Start the Vite development server
+    cmds:
+      - npm run dev
+
+  build:
+    desc: Type-check and build for production
+    cmds:
+      - npm run build
+
+  test:
+    desc: Run the test suite with Vitest
+    cmds:
+      - npx vitest run

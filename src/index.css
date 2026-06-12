@@ -19,7 +19,7 @@
   --color-danger: #f85149;
   --color-text: #e6edf3;
   --color-text-muted: #8b949e;
-  --font-sans: 'JetBrains Mono', 'Cascadia Code', 'Fira Code', monospace;
+  --font-primary: 'JetBrains Mono', 'Cascadia Code', 'Fira Code', monospace;
   --font-mono: 'JetBrains Mono', 'Cascadia Code', 'Fira Code', 'Consolas', monospace;
   --radius: 6px;
   --radius-lg: 12px;
@@ -32,7 +32,7 @@ html {
 }
 
 body {
-  font-family: var(--font-sans);
+  font-family: var(--font-primary);
   background-color: var(--color-bg);
   color: var(--color-text);
   line-height: 1.6;

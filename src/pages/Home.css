@@ -1,0 +1,123 @@
+.home {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+/* ── Hero ─────────────────────────────────────────────────── */
+.home-hero {
+  text-align: center;
+  padding: 3rem 1rem 2rem;
+}
+
+.home-hero-title {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin-bottom: 1rem;
+  color: var(--color-text);
+}
+
+.home-hero-icon {
+  font-size: 0.9em;
+}
+
+.home-hero-subtitle {
+  font-size: 1.1rem;
+  color: var(--color-text-muted);
+  max-width: 640px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+/* ── Sections ─────────────────────────────────────────────── */
+.section-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 1.25rem;
+  color: var(--color-text);
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+/* ── Tool grid ────────────────────────────────────────────── */
+.tool-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+.tool-card {
+  position: relative;
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  padding: 1.25rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  transition: border-color var(--transition), background var(--transition);
+}
+
+.tool-card--available {
+  cursor: pointer;
+}
+
+.tool-card--available:hover {
+  border-color: var(--color-accent-dim);
+  background: var(--color-surface-raised);
+}
+
+.tool-card--soon {
+  opacity: 0.6;
+}
+
+.tool-card-icon {
+  font-size: 1.75rem;
+  flex-shrink: 0;
+  line-height: 1;
+  margin-top: 0.1rem;
+}
+
+.tool-card-body {
+  flex: 1;
+}
+
+.tool-card-title {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+}
+
+.tool-card-desc {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  line-height: 1.55;
+}
+
+.tool-card-badge {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 0.2rem 0.5rem;
+  border-radius: 999px;
+  background: var(--color-surface-raised);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* ── About ────────────────────────────────────────────────── */
+.home-about {
+  padding-bottom: 1rem;
+}
+
+.home-about p {
+  color: var(--color-text-muted);
+  margin-bottom: 0.75rem;
+  max-width: 720px;
+  line-height: 1.7;
+}

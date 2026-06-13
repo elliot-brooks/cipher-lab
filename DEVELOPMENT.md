@@ -32,9 +32,7 @@ cipher-lab/
 ├── src/
 │   ├── components/     # Shared UI components
 │   ├── pages/          # Top-level page components
-│   ├── lib/
-│   │   ├── enigma/     # Enigma machine logic (coming soon)
-│   │   └── analysis/   # Crypto-analysis utilities (coming soon)
+│   ├── services/           # Core app logic
 │   ├── App.tsx
 │   ├── main.tsx
 │   └── index.css       # Global CSS variables & reset

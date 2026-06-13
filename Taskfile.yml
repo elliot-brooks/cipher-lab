@@ -16,3 +16,8 @@ tasks:
     desc: Run the test suite with Vitest
     cmds:
       - npx vitest run
+
+  deps:
+    desc: Install dependencies
+    cmds:
+      - npm install

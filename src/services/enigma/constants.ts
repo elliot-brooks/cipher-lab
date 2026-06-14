@@ -1,0 +1,3 @@
+export const ALPHABET = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+export const ALPHABET_LENGTH = 26
+export const ASCII_A = 65

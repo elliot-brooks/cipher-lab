@@ -1,22 +1,11 @@
-<img src="public/cipher-lab.svg" alt="Cipher Lab icon" width="80" />
+# <img src="public/cipher-lab.svg" alt="Cipher Lab logo" width="34" align="absmiddle" /> Cipher Lab
 
+Cipher Lab is a browser-based playground for hands-on cryptography.
 
-# 🔐 Cipher Lab
+It focuses on interactive cipher exploration, letting you test inputs, adjust settings, and learn by seeing how encrypted output changes.
 
-An open crypto-analysis workbench built with **React + TypeScript + Vite**.
+## Current experience
 
-## What is Cipher Lab?
+Cipher Lab currently includes:
 
-Cipher Lab is a browser-based toolset for exploring classical cryptography such as:
-
-- Enigma Simulator
-- Caesar Cipher
-- Vigenère Cipher
-
-## Tech stack
-
-- **[Vite](https://vitejs.dev/)**
-- **[React 18](https://react.dev/)** — UI framework
-- **[TypeScript](https://www.typescriptlang.org/)** — type-safe JavaScript
-
-See [DEVELOPMENT.md](DEVELOPMENT.md) for local setup and contributor workflows.
+- **Enigma Simulator** an accurate reacreation of the WWI German cipher machine, with configurable rotors, plugboard, and reflector

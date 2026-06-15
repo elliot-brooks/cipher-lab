@@ -31,4 +31,14 @@ describe('Plugboard', () => {
     plugboard.addCable(aIndex, eIndex)
     expect(plugboard.getPairedCharacters()).toEqual(['AE', 'EA'])
   })
+
+  test('rejectsSelfPairing', () => {
+    const plugboard = new Plugboard()
+
+    expect(() => plugboard.addCable(aIndex, aIndex)).toThrow(
+      'A plugboard cable cannot connect a letter to itself',
+    )
+    expect(plugboard.getCablesUsed()).toBe(0)
+    expect(plugboard.encrypt(aIndex)).toBe(aIndex)
+  })
 })

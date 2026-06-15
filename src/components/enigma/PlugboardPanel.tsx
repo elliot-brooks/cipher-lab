@@ -16,7 +16,7 @@ export default function PlugboardPanel({ machine, onChange }: PlugboardPanelProp
 
   const plugboard = machine.getPlugboard()
   const cables = plugboard.getPairedCharacters().filter((pair) => pair[0] < pair[1])
-  const canConnect = cableValue.length === 2
+  const canConnect = cableValue.length === 2 && cableValue[0] !== cableValue[1]
 
   const addCable = () => {
     if (canConnect) {
@@ -59,6 +59,7 @@ export default function PlugboardPanel({ machine, onChange }: PlugboardPanelProp
               }}
               placeholder="AB"
               maxLength={2}
+                aria-invalid={cableValue.length === 2 && !canConnect}
             />
           </label>
 

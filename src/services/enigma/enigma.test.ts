@@ -84,4 +84,13 @@ describe('Enigma', () => {
     machine.configureRotorRotations([19, 3, 16])
     expect(machine.encode(inputText)).toBe('LIOTLD')
   })
+
+  test('ignoresSelfPlugboardPairing', () => {
+    const machine = createDefaultEnigma()
+
+    machine.addCable('AA')
+    machine.addCable('AB')
+
+    expect(machine.getPlugboard().getEncoding()).toBe('AB BA')
+  })
 })

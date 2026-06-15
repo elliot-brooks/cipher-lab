@@ -2,8 +2,8 @@
 
 ## Prerequisites
 
-- [Node.js](https://nodejs.org/) 18 or later
-- npm 9 or later (bundled with Node.js)
+- [Node.js](https://nodejs.org/) 20 or later
+- npm 10 or later (bundled with Node.js)
 - [go-task](https://taskfile.dev/installation/) — task runner (`brew install go-task` / `scoop install task` / see docs)
 
 ## Setup

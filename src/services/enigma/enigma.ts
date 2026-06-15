@@ -151,7 +151,12 @@ export class Enigma {
     if (!/^[A-Z]+$/.test(cablePairing) || cablePairing.length !== 2) {
       return
     }
+
     const [first, second] = parseCablePairing(cablePairing)
+    if (first === second) {
+      return
+    }
+
     this.plugboard.addCable(first, second)
   }
 

@@ -1,16 +1,14 @@
 # Development
 
+This document outlines the development workflow for Cipher Lab. It is intended for developers who want to contribute to the project or run it locally.
+
+This project uses [Vite](https://vitejs.dev/) for development and build tooling, [Vitest](https://vitest.dev/) for testing, and [go-task](https://taskfile.dev/) for task automation.
+
 ## Prerequisites
 
 - [Node.js](https://nodejs.org/) 20 or later
 - npm 10 or later (bundled with Node.js)
 - [go-task](https://taskfile.dev/installation/) — task runner (`brew install go-task` / `scoop install task` / see docs)
-
-## Setup
-
-```bash
-npm install
-```
 
 ## Task runner
 
@@ -19,6 +17,8 @@ npm install
 | `task dev`   | Start the Vite development server   |
 | `task build` | Type-check and build for production |
 | `task test`  | Run the test suite with Vitest      |
+| `task deps`  | Install project dependencies        |
+
 
 Open [http://localhost:5173](http://localhost:5173) after running `task dev`.
 

@@ -42,6 +42,10 @@ export class Plugboard {
    * @throws {Error} If either character is already connected
    */
   addCable(firstCharacter: number, secondCharacter: number): void {
+    if (firstCharacter === secondCharacter) {
+      throw new Error('A plugboard cable cannot connect a letter to itself')
+    }
+
     if (this.isCharacterWired(firstCharacter) || this.isCharacterWired(secondCharacter)) {
       throw new Error('The specified connection already exists on the plugboard')
     }

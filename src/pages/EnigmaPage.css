@@ -1,0 +1,460 @@
+.enigma-page {
+  display: grid;
+  gap: 0.8rem;
+}
+
+.enigma-card {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: linear-gradient(180deg, rgba(33, 38, 45, 0.96), rgba(17, 20, 26, 0.96));
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.14);
+}
+
+.enigma-hero {
+  display: grid;
+  gap: 0.3rem;
+  padding: 1rem;
+}
+
+.enigma-hero h1 {
+  font-size: clamp(1.6rem, 3vw, 2.1rem);
+  letter-spacing: -0.02em;
+}
+
+.enigma-hero-description {
+  margin-top: 0.45rem;
+  max-width: 72ch;
+  color: var(--color-text-muted);
+}
+
+.enigma-layout {
+  display: grid;
+  gap: 0.8rem;
+}
+
+.enigma-config-pane {
+  padding-bottom: 0.85rem;
+}
+
+.enigma-machine-grid {
+  display: grid;
+  gap: 0.75rem;
+  padding: 0.75rem 0.95rem 0;
+}
+
+.enigma-machine-row {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.enigma-machine-row-secondary {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.enigma-machine-row-secondary .config-column {
+  grid-template-rows: auto minmax(0, 1fr);
+}
+
+.enigma-machine-row-secondary .subcard {
+  height: 100%;
+}
+
+.config-column {
+  display: grid;
+  align-content: start;
+  gap: 0.55rem;
+}
+
+.config-column-header {
+  display: grid;
+  gap: 0.25rem;
+}
+
+.config-column-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  min-width: 0;
+}
+
+.config-column-label .enigma-card-kicker {
+  margin: 0;
+  white-space: nowrap;
+}
+
+.config-column-header > div,
+.enigma-card-header > div,
+.enigma-hero > div {
+  min-width: 0;
+}
+
+.kicker-with-info {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  min-width: 0;
+}
+
+.title-with-info {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  min-width: 0;
+}
+
+.enigma-section-title {
+  margin: 0;
+  font-size: clamp(1.25rem, 2.2vw, 1.45rem);
+  letter-spacing: -0.01em;
+  color: var(--color-text);
+  text-transform: uppercase;
+}
+
+.kicker-with-info .enigma-card-kicker {
+  margin: 0;
+  white-space: nowrap;
+}
+
+.enigma-control-card {
+  padding-bottom: 0.85rem;
+}
+
+.enigma-control-body {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  gap: 0.75rem;
+  padding: 0.65rem 0.95rem 0;
+  align-items: stretch;
+}
+
+.message-column {
+  display: grid;
+  min-width: 0;
+}
+
+.message-swap {
+  display: grid;
+  align-items: center;
+}
+
+.swap-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.1rem;
+  height: 2.1rem;
+  border-radius: 999px;
+  border: 1px solid rgba(88, 166, 255, 0.4);
+  background: rgba(88, 166, 255, 0.12);
+  color: var(--color-accent);
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.swap-button:hover {
+  border-color: rgba(88, 166, 255, 0.65);
+  background: rgba(88, 166, 255, 0.22);
+}
+
+.swap-button:disabled {
+  opacity: 0.55;
+}
+
+.message-input,
+.message-output {
+  height: 100%;
+}
+
+.message-input textarea,
+.message-output textarea {
+  min-height: 230px;
+  max-height: 230px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(88, 166, 255, 0.4) rgba(13, 17, 23, 0.65);
+}
+
+.message-input textarea,
+.message-output textarea {
+  resize: none;
+}
+
+.message-input textarea::-webkit-scrollbar,
+.message-output textarea::-webkit-scrollbar {
+  width: 9px;
+}
+
+.message-input textarea::-webkit-scrollbar-track,
+.message-output textarea::-webkit-scrollbar-track {
+  background: rgba(13, 17, 23, 0.65);
+  border-radius: 999px;
+}
+
+.message-input textarea::-webkit-scrollbar-thumb,
+.message-output textarea::-webkit-scrollbar-thumb {
+  background: rgba(88, 166, 255, 0.35);
+  border-radius: 999px;
+}
+
+.message-output {
+  gap: 0.35rem;
+}
+
+.message-output textarea::placeholder {
+  color: var(--color-text-muted);
+  opacity: 1;
+}
+
+.enigma-card-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.7rem;
+  align-items: flex-start;
+  padding: 0.9rem 0.95rem 0;
+}
+
+.enigma-card-header h2 {
+  font-size: 1.06rem;
+  margin-top: 0.1rem;
+}
+
+.enigma-hero h1 {
+  margin: 0;
+}
+
+.enigma-card-header h2,
+.enigma-hero h1 {
+  overflow-wrap: anywhere;
+}
+
+.enigma-card-kicker,
+.subcard-label {
+  display: inline-flex;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.72rem;
+}
+
+.rotor-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.55rem;
+}
+
+.subcard {
+  display: grid;
+  gap: 0.65rem;
+  padding: 0.75rem;
+  border: 1px solid rgba(48, 54, 61, 0.9);
+  border-radius: var(--radius);
+  background: rgba(13, 17, 23, 0.55);
+}
+
+.subcard-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.subcard h3 {
+  font-size: 1rem;
+  margin-top: 0.1rem;
+}
+
+.subcard-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.9rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: 999px;
+  background: rgba(88, 166, 255, 0.16);
+  color: var(--color-text);
+  font-weight: 600;
+  font-size: 0.77rem;
+}
+
+.field {
+  display: grid;
+  gap: 0.3rem;
+}
+
+.field span {
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.72rem;
+}
+
+.field input,
+.field select,
+.field textarea {
+  width: 100%;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: rgba(13, 17, 23, 0.85);
+  color: var(--color-text);
+  padding: 0.55rem 0.65rem;
+}
+
+.field input[type='range'] {
+  padding: 0;
+}
+
+.field-grid {
+  display: grid;
+  gap: 0.55rem;
+}
+
+.field-grid output {
+  color: var(--color-text-muted);
+  font-size: 0.88rem;
+}
+
+.mono-block {
+  padding: 0.75rem;
+  border-radius: var(--radius);
+  border: 1px solid rgba(48, 54, 61, 0.9);
+  background: rgba(13, 17, 23, 0.68);
+  font-family: var(--font-mono);
+  letter-spacing: 0.05em;
+  word-break: break-word;
+}
+
+.mono-block-compact {
+  padding: 0.8rem;
+}
+
+.stat-value {
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.plugboard-subcard {
+  gap: 0.75rem;
+  align-content: start;
+}
+
+.plugboard-controls {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 0.55rem;
+  align-items: end;
+}
+
+.plugboard-pair-input {
+  min-width: 0;
+}
+
+.plugboard-actions {
+  display: flex;
+  gap: 0.45rem;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.plugboard-action {
+  min-height: 38px;
+  padding: 0.55rem 0.75rem;
+  font-size: 0.85rem;
+}
+
+.plugboard-actions .home-primary-action {
+  box-shadow: none;
+  transform: none;
+}
+
+.plugboard-connections {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.plugboard-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.chip-button,
+.ghost-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  border-radius: 999px;
+  border: 1px solid var(--color-border);
+  background: rgba(13, 17, 23, 0.85);
+  color: var(--color-text);
+  padding: 0.45rem 0.7rem;
+  font-size: 0.82rem;
+}
+
+.ghost-button:hover,
+.chip-button:hover {
+  border-color: rgba(88, 166, 255, 0.4);
+  background: rgba(88, 166, 255, 0.08);
+  text-decoration: none;
+}
+
+.message-trace {
+  grid-column: 1 / -1;
+  display: grid;
+  gap: 0.2rem;
+  padding: 0.55rem 0.7rem;
+  border: 1px solid rgba(48, 54, 61, 0.9);
+  border-radius: var(--radius);
+  background: rgba(13, 17, 23, 0.52);
+}
+
+.message-trace p {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: 0.82rem;
+}
+
+.empty-state {
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+}
+
+@media (max-width: 1080px) {
+  .rotor-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .enigma-machine-row-secondary {
+    grid-template-columns: 1fr;
+  }
+
+  .enigma-control-body {
+    grid-template-columns: 1fr;
+  }
+
+  .message-swap {
+    justify-items: center;
+  }
+
+  .enigma-card-header {
+    flex-direction: column;
+  }
+
+  .plugboard-controls {
+    grid-template-columns: 1fr;
+  }
+
+  .plugboard-actions {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 720px) {
+  .enigma-hero,
+  .enigma-card-header,
+  .enigma-control-body,
+  .enigma-machine-grid {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}

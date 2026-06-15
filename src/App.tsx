@@ -1,16 +1,45 @@
+import { useEffect, useState } from 'react'
+
 import './App.css'
-import Home from './pages/Home'
 import NavBar from './components/NavBar'
+import Home from './pages/Home'
+import EnigmaPage from './pages/EnigmaPage'
+
+type AppPage = 'home' | 'enigma'
+
+function readPageFromHash(): AppPage {
+  return window.location.hash === '#enigma' ? 'enigma' : 'home'
+}
 
 function App() {
+  const [page, setPage] = useState<AppPage>(readPageFromHash)
+
+  useEffect(() => {
+    if (!window.location.hash) {
+      window.history.replaceState(null, '', '#home')
+    }
+
+    const handleHashChange = () => {
+      setPage(readPageFromHash())
+    }
+
+    window.addEventListener('hashchange', handleHashChange)
+
+    return () => {
+      window.removeEventListener('hashchange', handleHashChange)
+    }
+  }, [])
+
+  const navigate = (nextPage: AppPage) => {
+    window.location.hash = `#${nextPage}`
+  }
+
   return (
     <div className="app">
-      <NavBar />
-      <main className="app-main">
-        <Home />
-      </main>
+      <NavBar currentPage={page} onNavigate={navigate} />
+      <main className="app-main">{page === 'enigma' ? <EnigmaPage /> : <Home onExplore={navigate} />}</main>
       <footer className="app-footer">
-        <span>Cipher Lab &mdash; an open crypto-analysis workbench</span>
+        <span>Cipher Lab - an open crypto-analysis workbench</span>
       </footer>
     </div>
   )

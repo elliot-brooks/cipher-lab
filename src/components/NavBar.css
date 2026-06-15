@@ -1,6 +1,8 @@
 .navbar {
   display: flex;
+  justify-content: space-between;
   align-items: center;
+  gap: 1rem;
   padding: 0 1.5rem;
   height: 56px;
   background: var(--color-surface);
@@ -14,6 +16,9 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  border: 0;
+  background: transparent;
+  color: inherit;
   user-select: none;
 }
 
@@ -27,4 +32,33 @@
   font-weight: 700;
   color: var(--color-text);
   letter-spacing: 0.02em;
+}
+
+.navbar-links {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.navbar-link {
+  border: 1px solid transparent;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--color-text-muted);
+  padding: 0.45rem 0.85rem;
+  font-size: 0.9rem;
+  transition: color var(--transition), border-color var(--transition), background var(--transition);
+}
+
+.navbar-link:hover {
+  color: var(--color-text);
+  text-decoration: none;
+  background: rgba(88, 166, 255, 0.08);
+  border-color: rgba(88, 166, 255, 0.18);
+}
+
+.navbar-link.is-active {
+  color: var(--color-text);
+  border-color: var(--color-border);
+  background: var(--color-surface-raised);
 }

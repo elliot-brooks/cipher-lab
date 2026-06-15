@@ -1,15 +1,17 @@
 import './NavBar.css'
 
 type NavBarProps = {
-  currentPage: 'home' | 'enigma' | 'how-it-works'
-  onNavigate: (page: 'home' | 'enigma' | 'how-it-works') => void
+  currentPage: 'home' | 'enigma'
+  onNavigate: (page: 'home' | 'enigma') => void
 }
 
 export default function NavBar({ currentPage, onNavigate }: NavBarProps) {
+  const logoSrc = `${import.meta.env.BASE_URL}cipher-lab.svg`
+
   return (
     <header className="navbar">
       <button className="navbar-brand" type="button" onClick={() => onNavigate('home')}>
-        <span className="navbar-logo">🔐</span>
+        <img src={logoSrc} alt="Cipher Lab Logo" className="navbar-logo" />
         <span className="navbar-title">Cipher Lab</span>
       </button>
       <nav className="navbar-links" aria-label="Primary navigation">
@@ -26,13 +28,6 @@ export default function NavBar({ currentPage, onNavigate }: NavBarProps) {
           onClick={() => onNavigate('enigma')}
         >
           Enigma Simulator
-        </button>
-        <button
-          type="button"
-          className={`navbar-link ${currentPage === 'how-it-works' ? 'is-active' : ''}`}
-          onClick={() => onNavigate('how-it-works')}
-        >
-          How it works
         </button>
       </nav>
     </header>

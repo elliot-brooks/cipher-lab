@@ -10,6 +10,10 @@
 }
 
 .home-hero-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.2em;
   font-size: clamp(2rem, 5vw, 3.5rem);
   font-weight: 800;
   letter-spacing: -0.02em;
@@ -18,7 +22,10 @@
 }
 
 .home-hero-icon {
-  font-size: 0.9em;
+  display: block;
+  width: 0.95em;
+  height: 0.95em;
+  flex-shrink: 0;
 }
 
 .home-hero-subtitle {

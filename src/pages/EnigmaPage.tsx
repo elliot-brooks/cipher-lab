@@ -111,6 +111,10 @@ export default function EnigmaPage() {
       <section className="enigma-hero enigma-card">
         <div>
           <h1>Enigma Simulator</h1>
+          <p className="enigma-hero-description">
+            Configure rotors, reflector, and plugboard, then watch each keypress transform your message with live
+            output and machine trace states.
+          </p>
         </div>
       </section>
 

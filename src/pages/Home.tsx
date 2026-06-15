@@ -1,15 +1,17 @@
 import './Home.css'
 
 type HomeProps = {
-  onExplore: (page: 'home' | 'enigma' | 'how-it-works') => void
+  onExplore: (page: 'home' | 'enigma') => void
 }
 
 export default function Home({ onExplore }: HomeProps) {
+  const logoSrc = `${import.meta.env.BASE_URL}cipher-lab.svg`
+
   return (
     <div className="home">
       <section className="home-hero home-card">
         <h1 className="home-hero-title">
-          <span className="home-hero-icon">🔐</span> Cipher Lab
+          <img src={logoSrc} alt="" className="home-hero-icon" aria-hidden="true" />Cipher Lab
         </h1>
         <p className="home-hero-subtitle">
           An open crypto-analysis workbench built with React &amp; TypeScript.

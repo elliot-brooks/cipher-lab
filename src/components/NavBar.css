@@ -23,8 +23,10 @@
 }
 
 .navbar-logo {
-  font-size: 1.4rem;
-  line-height: 1;
+  width: 1.4rem;
+  height: 1.4rem;
+  object-fit: contain;
+  display: block;
 }
 
 .navbar-title {

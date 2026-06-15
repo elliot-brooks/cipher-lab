@@ -42,3 +42,10 @@ cipher-lab/
 ├── tsconfig.json
 └── package.json
 ```
+
+## Release workflow
+
+Releases are created from the GitHub Actions workflow at `.github/workflows/release.yml`.
+
+Releases are tagged with a version number (for example `v1.0.0`) and deployed to GitHub Pages.
+Releases are created from `main`

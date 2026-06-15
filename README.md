@@ -1,4 +1,4 @@
-# <img src="public/cipher-lab.svg" alt="Cipher Lab logo" width="34" align="absmiddle" /> Cipher Lab
+# <img src="public/cipher-lab.svg" alt="Cipher Lab logo" width="50" align="absmiddle" /> Cipher Lab
 
 Cipher Lab is a browser-based playground for hands-on cryptography.
 

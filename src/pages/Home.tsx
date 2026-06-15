@@ -5,13 +5,12 @@ type HomeProps = {
 }
 
 export default function Home({ onExplore }: HomeProps) {
-  const logoSrc = `${import.meta.env.BASE_URL}cipher-lab.svg`
 
   return (
     <div className="home">
       <section className="home-hero home-card">
         <h1 className="home-hero-title">
-          <img src={logoSrc} alt="" className="home-hero-icon" aria-hidden="true" />Cipher Lab
+          <img src="cipher-lab.svg" alt="" className="home-hero-icon" aria-hidden="true" />Cipher Lab
         </h1>
         <p className="home-hero-subtitle">
           An open crypto-analysis workbench built with React &amp; TypeScript.

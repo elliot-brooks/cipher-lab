@@ -6,12 +6,10 @@ type NavBarProps = {
 }
 
 export default function NavBar({ currentPage, onNavigate }: NavBarProps) {
-  const logoSrc = `${import.meta.env.BASE_URL}cipher-lab.svg`
-
   return (
     <header className="navbar">
       <button className="navbar-brand" type="button" onClick={() => onNavigate('home')}>
-        <img src={logoSrc} alt="Cipher Lab Logo" className="navbar-logo" />
+        <img src="cipher-lab.svg" alt="Cipher Lab Logo" className="navbar-logo" />
         <span className="navbar-title">Cipher Lab</span>
       </button>
       <nav className="navbar-links" aria-label="Primary navigation">

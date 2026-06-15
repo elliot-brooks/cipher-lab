@@ -62,3 +62,17 @@
   border-color: var(--color-border);
   background: var(--color-surface-raised);
 }
+
+@media (max-width: 760px) {
+  .navbar {
+    height: auto;
+    padding: 0.7rem 1rem;
+    flex-wrap: wrap;
+  }
+
+  .navbar-links {
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+}

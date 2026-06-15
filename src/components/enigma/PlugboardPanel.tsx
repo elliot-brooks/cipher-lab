@@ -1,7 +1,6 @@
 import { useState } from 'react'
 
 import type { Enigma } from '../../services/enigma'
-import InfoHint from './InfoHint'
 
 type PlugboardPanelProps = {
   machine: Enigma
@@ -17,13 +16,19 @@ export default function PlugboardPanel({ machine, onChange }: PlugboardPanelProp
 
   const plugboard = machine.getPlugboard()
   const cables = plugboard.getPairedCharacters().filter((pair) => pair[0] < pair[1])
+  const canConnect = cableValue.length === 2
 
   const addCable = () => {
-    const pair = normalizeCable(cableValue)
-    if (pair.length === 2) {
-      machine.addCable(pair)
-      setCableValue('')
-      onChange()
+    if (canConnect) {
+      const pair = normalizeCable(cableValue)
+
+      try {
+        machine.addCable(pair)
+        setCableValue('')
+        onChange()
+      } catch {
+        // Ignore duplicates/invalid pairs and keep current input.
+      }
     }
   }
 
@@ -35,61 +40,63 @@ export default function PlugboardPanel({ machine, onChange }: PlugboardPanelProp
   return (
     <section className="config-column">
       <div className="config-column-header">
-        <div className="config-column-label">
-          <span className="enigma-card-kicker">Plugboard</span>
-          <InfoHint text="Plugboard swaps letter pairs before and after the rotor path." />
-        </div>
+        <span className="enigma-card-kicker">Plugboard</span>
       </div>
 
-      <div className="subcard">
+      <div className="subcard plugboard-subcard">
         <div className="plugboard-controls">
           <label className="field plugboard-pair-input">
-            <span>Cable pair</span>
+            <span className="subcard-label">Pair</span>
             <input
               type="text"
               value={cableValue}
-              onChange={(event) => setCableValue(event.target.value)}
+              onChange={(event) => setCableValue(normalizeCable(event.target.value))}
+              onKeyDown={(event) => {
+                if (event.key === 'Enter') {
+                  event.preventDefault()
+                  addCable()
+                }
+              }}
               placeholder="AB"
               maxLength={2}
             />
           </label>
-          <button className="home-primary-action" type="button" onClick={addCable}>
-            Connect
-          </button>
-          <button className="ghost-button" type="button" onClick={clearAll} disabled={cables.length === 0}>
-            Clear
-          </button>
-        </div>
 
-        <div className="enigma-row">
-          <div>
-            <span className="subcard-label">Wiring</span>
-            <div className="mono-block mono-block-compact">{plugboard.getEncoding() || 'No cables installed'}</div>
-          </div>
-          <div>
-            <span className="subcard-label">Cables</span>
-            <div className="stat-value">{cables.length}</div>
+          <div className="plugboard-actions">
+            <button className="home-primary-action plugboard-action" type="button" onClick={addCable} disabled={!canConnect}>
+              Connect
+            </button>
+            <button className="ghost-button plugboard-action" type="button" onClick={clearAll} disabled={cables.length === 0}>
+              Clear all
+            </button>
           </div>
         </div>
 
-        <div className="plugboard-list">
-          {cables.length > 0 ? (
-            cables.map((pair) => (
-              <button
-                key={pair}
-                className="chip-button"
-                type="button"
-                onClick={() => {
-                  machine.removeCable(pair)
-                  onChange()
-                }}
-              >
-                Disconnect {pair}
-              </button>
-            ))
-          ) : (
-            <span className="empty-state">No cables</span>
-          )}
+        <div className="plugboard-connections">
+          <span className="subcard-label">Wiring</span>
+          <div className="plugboard-list">
+            {cables.length > 0 ? (
+              cables.map((pair) => (
+                <button
+                  key={pair}
+                  className="chip-button"
+                  type="button"
+                  aria-label={`Disconnect ${pair}`}
+                  onClick={() => {
+                    machine.removeCable(pair)
+                    onChange()
+                  }}
+                >
+                  <span>
+                    {pair}|{pair[1]}{pair[0]}
+                  </span>
+                  <span aria-hidden="true">x</span>
+                </button>
+              ))
+            ) : (
+              <span className="empty-state">No cables</span>
+            )}
+          </div>
         </div>
       </div>
     </section>

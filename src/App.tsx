@@ -4,11 +4,20 @@ import './App.css'
 import NavBar from './components/NavBar'
 import Home from './pages/Home'
 import EnigmaPage from './pages/EnigmaPage'
+import HowItWorksPage from './pages/HowItWorksPage'
 
-type AppPage = 'home' | 'enigma'
+export type AppPage = 'home' | 'enigma' | 'how-it-works'
 
 function readPageFromHash(): AppPage {
-  return window.location.hash === '#enigma' ? 'enigma' : 'home'
+  if (window.location.hash === '#enigma') {
+    return 'enigma'
+  }
+
+  if (window.location.hash === '#how-it-works') {
+    return 'how-it-works'
+  }
+
+  return 'home'
 }
 
 function App() {
@@ -37,7 +46,11 @@ function App() {
   return (
     <div className="app">
       <NavBar currentPage={page} onNavigate={navigate} />
-      <main className="app-main">{page === 'enigma' ? <EnigmaPage /> : <Home onExplore={navigate} />}</main>
+      <main className="app-main">
+        {page === 'home' && <Home onExplore={navigate} />}
+        {page === 'enigma' && <EnigmaPage />}
+        {page === 'how-it-works' && <HowItWorksPage />}
+      </main>
       <footer className="app-footer">
         <span>Cipher Lab - an open crypto-analysis workbench</span>
       </footer>

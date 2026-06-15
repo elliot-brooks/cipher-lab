@@ -1,7 +1,7 @@
 import './Home.css'
 
 type HomeProps = {
-  onExplore: (page: 'home' | 'enigma') => void
+  onExplore: (page: 'home' | 'enigma' | 'how-it-works') => void
 }
 
 export default function Home({ onExplore }: HomeProps) {

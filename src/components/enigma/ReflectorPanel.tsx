@@ -1,6 +1,5 @@
 import type { Enigma } from '../../services/enigma'
 
-import InfoHint from './InfoHint'
 import { REFLECTOR_PRESETS, Reflector } from '../../services/enigma'
 
 const REFLECTOR_NAMES = ['UKW_A', 'UKW_B', 'UKW_C'] as const
@@ -21,20 +20,10 @@ export default function ReflectorPanel({ machine, onChange }: ReflectorPanelProp
   return (
     <section className="config-column">
       <div className="config-column-header">
-        <div className="config-column-label">
-          <span className="enigma-card-kicker">Reflector</span>
-          <InfoHint text="Reflector sends the signal back through the rotor stack. Switch presets to change the path." />
-        </div>
+        <span className="enigma-card-kicker">Reflector</span>
       </div>
 
       <div className="subcard">
-        <div className="subcard-header">
-          <div>
-            <span className="subcard-label">Current reflector</span>
-            <h3>{reflector.name}</h3>
-          </div>
-        </div>
-
         <label className="field">
           <span>Preset</span>
           <select

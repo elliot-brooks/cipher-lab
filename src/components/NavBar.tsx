@@ -1,8 +1,8 @@
 import './NavBar.css'
 
 type NavBarProps = {
-  currentPage: 'home' | 'enigma'
-  onNavigate: (page: 'home' | 'enigma') => void
+  currentPage: 'home' | 'enigma' | 'how-it-works'
+  onNavigate: (page: 'home' | 'enigma' | 'how-it-works') => void
 }
 
 export default function NavBar({ currentPage, onNavigate }: NavBarProps) {
@@ -26,6 +26,13 @@ export default function NavBar({ currentPage, onNavigate }: NavBarProps) {
           onClick={() => onNavigate('enigma')}
         >
           Enigma Simulator
+        </button>
+        <button
+          type="button"
+          className={`navbar-link ${currentPage === 'how-it-works' ? 'is-active' : ''}`}
+          onClick={() => onNavigate('how-it-works')}
+        >
+          How it works
         </button>
       </nav>
     </header>

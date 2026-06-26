@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEnvelope, faKey, faLock, faLockOpen, faPenNib } from '../icons/fontAwesome'
+import { faEnvelope, faKey, faLock, faLockOpen, faPenNib } from '@fortawesome/free-solid-svg-icons'
 import './RsaWorkbenchPage.css'
 
 type RsaTab = 'about' | 'keys' | 'encrypt' | 'decrypt' | 'attack'

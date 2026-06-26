@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import "./EnigmaPage.css";
 import InfoHint from "../components/common/InfoHint";
-import { byPrefixAndName } from "../icons/fontAwesome";
+import { faRotate } from "@fortawesome/free-solid-svg-icons";
 import InfoModal from "../components/common/InfoModal";
 import {
   Enigma,
@@ -164,7 +164,7 @@ export default function EnigmaPage() {
                 aria-label="Swap input and output"
               >
                 <FontAwesomeIcon
-                  icon={byPrefixAndName.fas["rotate"]}
+                  icon={faRotate}
                   aria-hidden="true"
                 />
               </button>

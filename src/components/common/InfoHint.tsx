@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-import { byPrefixAndName } from '../../icons/fontAwesome'
+import { faCircleInfo } from '@fortawesome/free-solid-svg-icons'
 import './InfoUi.css'
 
 export type InfoHintProps = {
@@ -12,7 +12,7 @@ export type InfoHintProps = {
 export default function InfoHint({ title, description, onOpen }: InfoHintProps) {
   return (
     <button className="info-hint" type="button" onClick={() => onOpen(title, description)}>
-      <FontAwesomeIcon icon={byPrefixAndName.fas['circle-info']} aria-hidden="true" />
+      <FontAwesomeIcon icon={faCircleInfo} aria-hidden="true" />
     </button>
   )
 }

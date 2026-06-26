@@ -1,4 +1,4 @@
-import { faCircleInfo, faRotate } from '@fortawesome/free-solid-svg-icons'
+import { faCircleInfo, faEnvelope, faKey, faLock, faLockOpen, faPenNib, faRotate } from '@fortawesome/free-solid-svg-icons'
 
 export const byPrefixAndName = {
   fas: {
@@ -6,3 +6,5 @@ export const byPrefixAndName = {
     'circle-info': faCircleInfo,
   },
 } as const
+
+export { faEnvelope, faKey, faLock, faLockOpen, faPenNib }

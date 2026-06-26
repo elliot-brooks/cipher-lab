@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faEnvelope, faKey, faLock, faLockOpen, faPenNib } from '../icons/fontAwesome'
 import './RsaWorkbenchPage.css'
 
 type RsaTab = 'about' | 'keys' | 'encrypt' | 'decrypt' | 'attack'
@@ -91,7 +93,7 @@ function AboutTab({ onStart }: AboutTabProps) {
         <div className="rsa-key-cards">
           <div className="rsa-key-card is-public">
             <div className="rsa-key-card-header">
-              <span className="rsa-key-icon">🔓</span>
+              <FontAwesomeIcon icon={faLockOpen} className="rsa-key-icon" />
               <span className="rsa-key-label">Public key</span>
             </div>
             <code className="rsa-key-value">(n, e)</code>
@@ -99,7 +101,7 @@ function AboutTab({ onStart }: AboutTabProps) {
           </div>
           <div className="rsa-key-card is-private">
             <div className="rsa-key-card-header">
-              <span className="rsa-key-icon">🔑</span>
+              <FontAwesomeIcon icon={faKey} className="rsa-key-icon" />
               <span className="rsa-key-label">Private key</span>
             </div>
             <code className="rsa-key-value">(n, d)</code>
@@ -134,17 +136,17 @@ function AboutTab({ onStart }: AboutTabProps) {
         <h2 className="rsa-section-heading">Where it's used</h2>
         <div className="rsa-use-cards">
           <div className="rsa-use-card">
-            <span className="rsa-use-icon">🔒</span>
+            <FontAwesomeIcon icon={faLock} className="rsa-use-icon" />
             <span className="rsa-use-name">TLS / HTTPS</span>
             <p className="rsa-use-desc">Encrypts the session key during the handshake</p>
           </div>
           <div className="rsa-use-card">
-            <span className="rsa-use-icon">✍</span>
+            <FontAwesomeIcon icon={faPenNib} className="rsa-use-icon" />
             <span className="rsa-use-name">Digital Signatures</span>
             <p className="rsa-use-desc">Sign with private key, verify with public key</p>
           </div>
           <div className="rsa-use-card">
-            <span className="rsa-use-icon">✉</span>
+            <FontAwesomeIcon icon={faEnvelope} className="rsa-use-icon" />
             <span className="rsa-use-name">Encrypted Email</span>
             <p className="rsa-use-desc">PGP and S/MIME use RSA for key exchange</p>
           </div>

@@ -7,14 +7,14 @@ A pure TypeScript implementation of textbook RSA. All operations use `bigint`, s
 ## Importing
 
 ```ts
-import { generateKeyPair, encrypt, decrypt } from './index'
-import type { RsaKeyPair, RsaPublicKey, RsaPrivateKey } from './index'
+import { generateKeyPair, genRandomKeyPair, encrypt, decrypt } from './index'
+import type { DebugRsaKeyPair, RsaKeyPair, RsaPublicKey, RsaPrivateKey } from './index'
 ```
 
 Math helpers are also exported if you need them directly:
 
 ```ts
-import { isPrime, gcd, modPow, modInverse, toBigInt } from './index'
+import { isPrime, gcd, modPow, modInverse, toBigInt, generateRandomPrime } from './index'
 ```
 
 ## Quick Start
@@ -26,7 +26,43 @@ const ciphertext = encrypt(65, publicKey)   // 2790n
 const message    = decrypt(ciphertext, privateKey)  // 65n
 ```
 
-## Key Generation
+## Random Key Generation
+
+```ts
+genRandomKeyPair(debug: true):  DebugRsaKeyPair   // keeps p, q, φ(n) for display
+genRandomKeyPair(debug: false): RsaKeyPair      // discards p, q, φ(n)
+```
+
+Generates a key pair from two randomly chosen ~256-bit primes. The return type is narrowed by the overload so TypeScript enforces the presence or absence of the intermediate values at compile time.
+
+```ts
+// Workbench / debug mode — show the intermediate values in the UI
+const { publicKey, privateKey, p, q, phi } = genRandomKeyPair(true)
+
+// Production-style — intermediates never reach the caller
+const { publicKey, privateKey } = genRandomKeyPair(false)
+```
+
+`RsaKeyPair` is the minimal pair without intermediates:
+
+```ts
+interface RsaKeyPair {
+  publicKey:  RsaPublicKey   // { n: bigint; e: bigint }
+  privateKey: RsaPrivateKey  // { n: bigint; d: bigint }
+}
+```
+
+`DebugRsaKeyPair` extends `RsaKeyPair` with the debug fields:
+
+```ts
+interface DebugRsaKeyPair extends RsaKeyPair {
+  p:   bigint   // first prime
+  q:   bigint   // second prime
+  phi: bigint   // φ(n) = (p-1)(q-1)
+}
+```
+
+## Manual Key Generation
 
 ```ts
 generateKeyPair(p, q, e?)
@@ -38,18 +74,7 @@ generateKeyPair(p, q, e?)
 | `q` | `number \| bigint` | Second prime, must differ from `p` |
 | `e` | `number \| bigint` (optional) | Public exponent; defaults to `65537` when valid, otherwise the smallest valid odd value |
 
-Returns an `RsaKeyPair`:
-
-```ts
-interface RsaKeyPair {
-  publicKey:  { n: bigint; e: bigint }
-  privateKey: { n: bigint; d: bigint }
-  p:   bigint   // first prime  — discard in production
-  q:   bigint   // second prime — discard in production
-  phi: bigint   // φ(n)         — discard in production
-}
-```
-
+Returns an `DebugRsaKeyPair` (see type definition in [Random Key Generation](#random-key-generation)).
 `p`, `q`, and `phi` are included so the workbench UI can display the intermediate values; in a real system they would be discarded immediately.
 
 ### Errors thrown
@@ -81,6 +106,15 @@ const m = decrypt(c,   privateKey)  // 65n    (M = C^d mod n)
 ```
 
 ## Number-Theory Helpers
+
+### `generateRandomPrime(bits?: number): bigint`
+
+Generates a cryptographically random prime using `crypto.getRandomValues`. Defaults to ~256 bits. The returned value has the top bit set (ensuring it is close to the requested length) and is odd. Retries until a prime is found; for 256-bit primes this typically takes ~30 iterations.
+
+```ts
+const p = generateRandomPrime()       // ~256-bit prime
+const q = generateRandomPrime(128)    // ~128-bit prime
+```
 
 ### `isPrime(candidate: number | bigint): boolean`
 

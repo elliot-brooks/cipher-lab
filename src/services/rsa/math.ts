@@ -88,6 +88,41 @@ export function modInverse(value: bigint, modulus: bigint): bigint {
   return ((oldCoefficient % modulus) + modulus) % modulus
 }
 
+/** Default bit length for randomly generated primes. */
+const DEFAULT_PRIME_BITS = 256
+
+function bytesToBigInt(bytes: Uint8Array): bigint {
+  let result = 0n
+  for (const byte of bytes) {
+    result = (result << 8n) | BigInt(byte)
+  }
+  return result
+}
+
+/**
+ * Generate a cryptographically random prime of approximately `bits` bits.
+ * Uses `crypto.getRandomValues` and retries until a prime is found.
+ * @param {number} [bits=256] - Approximate bit length; rounded up to the next byte boundary
+ * @returns {bigint} A prime number
+ * @throws {Error} If bits is less than 2
+ */
+export function generateRandomPrime(bits: number = DEFAULT_PRIME_BITS): bigint {
+  if (bits < 2) {
+    throw new Error('bits must be at least 2')
+  }
+  const byteLength = Math.ceil(bits / 8)
+  const bytes = new Uint8Array(byteLength)
+  while (true) {
+    crypto.getRandomValues(bytes)
+    bytes[0] |= 0x80        // set top bit so the number is at least byteLength*8-1 bits long
+    bytes[byteLength - 1] |= 0x01  // set bottom bit so the candidate is odd
+    const candidate = bytesToBigInt(bytes)
+    if (isPrime(candidate)) {
+      return candidate
+    }
+  }
+}
+
 /**
  * Primality test: trial division for small values, then deterministic
  * Miller-Rabin (exact for all n < 3.3 * 10^24, covering any value this lab uses).

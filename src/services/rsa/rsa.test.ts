@@ -1,6 +1,6 @@
 import { describe, expect, test } from 'vitest'
 
-import { decrypt, encrypt, generateKeyPair } from './rsa'
+import { decrypt, encrypt, generateKeyPair, genRandomKeyPair } from './rsa'
 
 describe('generateKeyPair', () => {
   test('computes n, φ(n), and d for the classic textbook example', () => {
@@ -37,6 +37,33 @@ describe('generateKeyPair', () => {
     expect(() => generateKeyPair(61, 53, 1)).toThrow('1 < e < φ(n)')
     expect(() => generateKeyPair(61, 53, 3120)).toThrow('1 < e < φ(n)')
     expect(() => generateKeyPair(61, 53, 4)).toThrow('not coprime')
+  })
+})
+
+describe('genRandomKeyPair', () => {
+  test('debug=true returns p, q, and phi', () => {
+    const pair = genRandomKeyPair(true)
+    expect(pair.p).toBeDefined()
+    expect(pair.q).toBeDefined()
+    expect(pair.phi).toBeDefined()
+    expect(pair.p).not.toBe(pair.q)
+    expect(pair.phi).toBe((pair.p - 1n) * (pair.q - 1n))
+    expect(pair.publicKey.n).toBe(pair.p * pair.q)
+  })
+
+  test('debug=false omits p, q, and phi', () => {
+    const keys = genRandomKeyPair(false)
+    expect('p' in keys).toBe(false)
+    expect('q' in keys).toBe(false)
+    expect('phi' in keys).toBe(false)
+    expect(keys.publicKey).toBeDefined()
+    expect(keys.privateKey).toBeDefined()
+  })
+
+  test('generated keys encrypt and decrypt correctly', () => {
+    const { publicKey, privateKey } = genRandomKeyPair(false)
+    const message = 12345678901234567890n % publicKey.n
+    expect(decrypt(encrypt(message, publicKey), privateKey)).toBe(message)
   })
 })
 

@@ -9,8 +9,10 @@ export {
   decrypt,
   encrypt,
   generateKeyPair,
-  type RsaKeyPair,
+  genRandomKeyPair,
+  type DebugRsaKeyPair as RsaKeyPair,
+  type RsaKeyPair as RsaKeys,
   type RsaPrivateKey,
   type RsaPublicKey,
 } from './rsa'
-export { gcd, isPrime, modInverse, modPow, toBigInt } from './math'
+export { generateRandomPrime, gcd, isPrime, modInverse, modPow, toBigInt } from './math'

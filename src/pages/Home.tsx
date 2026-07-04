@@ -1,7 +1,9 @@
 import './Home.css'
 
+import type { AppPage } from '../App'
+
 type HomeProps = {
-  onExplore: (page: 'home' | 'enigma') => void
+  onExplore: (page: AppPage) => void
 }
 
 export default function Home({ onExplore }: HomeProps) {
@@ -19,7 +21,10 @@ export default function Home({ onExplore }: HomeProps) {
         </p>
         <div className="home-hero-actions">
           <button className="home-primary-action" type="button" onClick={() => onExplore('enigma')}>
-            Start exploring
+            Enigma Simulator
+          </button>
+          <button className="home-primary-action" type="button" onClick={() => onExplore('rsa')}>
+            RSA Workbench
           </button>
         </div>
       </section>

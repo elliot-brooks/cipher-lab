@@ -11,7 +11,7 @@ import {
   Reflector,
   Rotor,
   createDefaultEnigma,
-} from "../services/enigma";
+} from "../services/enigma/enigma";
 import PlugboardPanel from "../components/enigma/PlugboardPanel";
 import ReflectorPanel from "../components/enigma/ReflectorPanel";
 import RotorPanel from "../components/enigma/RotorPanel";

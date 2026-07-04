@@ -1,4 +1,4 @@
-import { Enigma } from './enigma'
+import { Enigma } from './enigma-service'
 import { Plugboard } from './plugboard'
 import { Reflector } from './reflector'
 import { Rotor } from './rotor'

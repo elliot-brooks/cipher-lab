@@ -1,6 +1,6 @@
-import type { Enigma } from '../../services/enigma'
+import type { Enigma } from '../../services/enigma/enigma'
 
-import { REFLECTOR_PRESETS, Reflector } from '../../services/enigma'
+import { REFLECTOR_PRESETS, Reflector } from '../../services/enigma/enigma'
 
 const REFLECTOR_NAMES = ['UKW_A', 'UKW_B', 'UKW_C'] as const
 

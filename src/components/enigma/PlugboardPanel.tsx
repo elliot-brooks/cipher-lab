@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import type { Enigma } from '../../services/enigma/enigma'
+import type { Enigma } from '../../services/enigma'
 
 type PlugboardPanelProps = {
   machine: Enigma

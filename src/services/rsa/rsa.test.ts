@@ -1,6 +1,6 @@
 import { describe, expect, test } from 'vitest'
 
-import { decrypt, encrypt, generateKeyPair, genRandomKeyPair } from './rsa-service'
+import { decrypt, encrypt, generateKeyPair, genRandomKeyPair } from './rsa'
 
 describe('generateKeyPair', () => {
   test('computes n, φ(n), and d for the classic textbook example', () => {

@@ -1,6 +1,6 @@
-import type { Enigma } from '../../services/enigma/enigma'
+import type { Enigma } from '../../services/enigma'
 
-import { ROTOR_PRESETS, Rotor } from '../../services/enigma/enigma'
+import { ROTOR_PRESETS, Rotor } from '../../services/enigma'
 
 const ROTOR_NAMES = ['I', 'II', 'III', 'IV', 'V'] as const
 

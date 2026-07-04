@@ -8,4 +8,5 @@ It focuses on interactive cipher exploration, letting you test inputs, adjust se
 
 Cipher Lab currently includes:
 
-- **Enigma Simulator** an accurate reacreation of the WWI German cipher machine, with configurable rotors, plugboard, and reflector
+- **Enigma Simulator** an accurate reacreation of the WWI German cipher machine
+- **RSA Workbench** an interactive walkthrough of RSA Cryptography

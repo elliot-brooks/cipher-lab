@@ -10,8 +10,8 @@ export {
   encrypt,
   generateKeyPair,
   genRandomKeyPair,
-  type DebugRsaKeyPair as RsaKeyPair,
-  type RsaKeyPair as RsaKeys,
+  type DebugRsaKeyPair,
+  type RsaKeyPair,
   type RsaPrivateKey,
   type RsaPublicKey,
 } from './rsa'

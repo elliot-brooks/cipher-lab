@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react'
 import type { ReactNode } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCheck, faCopy, faDice, faEnvelope, faKey, faLock, faLockOpen, faPaste, faPenNib, faRotateLeft, faXmark } from '@fortawesome/free-solid-svg-icons'
+import { faCheck, faCopy, faDice, faEnvelope, faKey, faLock, faLockOpen, faPaste, faPen, faPenNib, faRotateLeft, faXmark } from '@fortawesome/free-solid-svg-icons'
 import { decrypt, encrypt, generateKeyPair, generateRandomPrime, isPrime } from '../services/rsa'
 import type { DebugRsaKeyPair, RsaPrivateKey, RsaPublicKey } from '../services/rsa'
 import './RsaWorkbenchPage.css'
@@ -409,25 +409,49 @@ function ClearButton({ disabled, onClear }: { disabled: boolean; onClear: () => 
   )
 }
 
-type KeyHeaderProps = {
+type KeyConfigProps = {
   label: string
+  preview: string
   canLoadKeys: boolean
   onLoadKeys: () => void
+  children: ReactNode
 }
 
-function KeyHeader({ label, canLoadKeys, onLoadKeys }: KeyHeaderProps) {
+function KeyConfig({ label, preview, canLoadKeys, onLoadKeys, children }: KeyConfigProps) {
+  const [editing, setEditing] = useState(false)
+
   return (
-    <div className="rsa-tool-key-header">
-      <span className="rsa-kicker">{label}</span>
-      <button
-        className="rsa-field-action"
-        type="button"
-        disabled={!canLoadKeys}
-        title={canLoadKeys ? 'Copy the key derived on the Keys tab into these fields' : 'The Keys tab inputs do not currently produce a valid key pair'}
-        onClick={onLoadKeys}
-      >
-        <FontAwesomeIcon icon={faRotateLeft} aria-hidden="true" /> use Keys tab
-      </button>
+    <div className="rsa-field">
+      <span className="rsa-field-label">
+        {label}
+        <span className="rsa-field-buttons">
+          <button
+            className="rsa-field-action"
+            type="button"
+            disabled={!canLoadKeys}
+            aria-label="Reset to the key from the Keys tab"
+            title={canLoadKeys ? 'Reset to the key derived on the Keys tab' : 'The Keys tab inputs do not currently produce a valid key pair'}
+            onClick={onLoadKeys}
+          >
+            <FontAwesomeIcon icon={faRotateLeft} aria-hidden="true" />
+          </button>
+          <button
+            className="rsa-field-action"
+            type="button"
+            title={editing ? 'Finish editing the key' : 'Edit the key components'}
+            onClick={() => setEditing((value) => !value)}
+          >
+            <FontAwesomeIcon icon={editing ? faCheck : faPen} aria-hidden="true" /> {editing ? 'done' : 'edit'}
+          </button>
+        </span>
+      </span>
+      {editing ? (
+        <div className="rsa-key-fields">{children}</div>
+      ) : (
+        <button className="rsa-key-display" type="button" title="Edit the key components" onClick={() => setEditing(true)}>
+          {preview}
+        </button>
+      )}
     </div>
   )
 }
@@ -468,11 +492,16 @@ function EncryptTab({ nInput, eInput, onNChange, onEChange, message, onMessageCh
   return (
     <div className="rsa-tool-grid">
       <section className="rsa-tool-column">
-        <KeyHeader label="Public key" canLoadKeys={canLoadKeys} onLoadKeys={onLoadKeys} />
-        <div className="rsa-key-fields">
+        <span className="rsa-kicker">Encrypt</span>
+        <KeyConfig
+          label="Public key"
+          preview={`(n=${nInput.trim() || '?'}, e=${eInput.trim() || '?'})`}
+          canLoadKeys={canLoadKeys}
+          onLoadKeys={onLoadKeys}
+        >
           <NumberField label="modulus n" value={nInput} check={nCheck} onChange={onNChange} />
           <NumberField label="exponent e" value={eInput} check={eCheck} onChange={onEChange} />
-        </div>
+        </KeyConfig>
 
         <label className="rsa-field">
           <span className="rsa-field-label">
@@ -567,11 +596,16 @@ function DecryptTab({ nInput, dInput, onNChange, onDChange, cipherInput, onCiphe
   return (
     <div className="rsa-tool-grid">
       <section className="rsa-tool-column">
-        <KeyHeader label="Private key" canLoadKeys={canLoadKeys} onLoadKeys={onLoadKeys} />
-        <div className="rsa-key-fields">
+        <span className="rsa-kicker">Decrypt</span>
+        <KeyConfig
+          label="Private key"
+          preview={`(n=${nInput.trim() || '?'}, d=${dInput.trim() || '?'})`}
+          canLoadKeys={canLoadKeys}
+          onLoadKeys={onLoadKeys}
+        >
           <NumberField label="modulus n" value={nInput} check={nCheck} onChange={onNChange} />
           <NumberField label="exponent d" value={dInput} check={dCheck} onChange={onDChange} />
-        </div>
+        </KeyConfig>
 
         <label className="rsa-field">
           <span className="rsa-field-label">

@@ -210,11 +210,11 @@
 }
 
 .rsa-key-label {
-  font-size: 0.72rem;
+  font-size: 0.85rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.07em;
-  color: var(--color-text-muted);
+  color: var(--color-text);
 }
 
 .rsa-key-value {
@@ -254,11 +254,11 @@
 }
 
 .rsa-cipher-op {
-  font-size: 0.72rem;
+  font-size: 0.85rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.07em;
-  color: var(--color-text-muted);
+  color: var(--color-text);
 }
 
 .rsa-cipher-formula {
@@ -333,10 +333,11 @@
 
 /* ── Workbench shared ───────────────────────────────────────── */
 .rsa-kicker {
-  font-size: 0.72rem;
+  font-size: 1rem;
+  font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: var(--color-text-muted);
+  letter-spacing: 0.08em;
+  color: var(--color-text);
 }
 
 .rsa-field {
@@ -521,11 +522,24 @@
   min-width: 0;
 }
 
-.rsa-tool-key-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 0.75rem;
+.rsa-key-display {
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  text-align: left;
+  width: 100%;
+  padding: 0.55rem 0.65rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: var(--color-surface);
+  color: var(--color-text);
+  word-break: break-all;
+  line-height: 1.6;
+  cursor: pointer;
+  transition: border-color var(--transition);
+}
+
+.rsa-key-display:hover {
+  border-color: rgba(88, 166, 255, 0.4);
 }
 
 .rsa-key-fields {

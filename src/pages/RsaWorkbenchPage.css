@@ -210,11 +210,11 @@
 }
 
 .rsa-key-label {
-  font-size: 0.72rem;
+  font-size: 0.85rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.07em;
-  color: var(--color-text-muted);
+  color: var(--color-text);
 }
 
 .rsa-key-value {
@@ -254,11 +254,11 @@
 }
 
 .rsa-cipher-op {
-  font-size: 0.72rem;
+  font-size: 0.85rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.07em;
-  color: var(--color-text-muted);
+  color: var(--color-text);
 }
 
 .rsa-cipher-formula {
@@ -331,13 +331,367 @@
   background: var(--color-accent);
 }
 
+/* ── Workbench shared ───────────────────────────────────────── */
+.rsa-kicker {
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-text);
+}
+
+.rsa-field {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.rsa-field-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.75rem;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--color-text-muted);
+}
+
+.rsa-field input,
+.rsa-field textarea {
+  width: 100%;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: rgba(13, 17, 23, 0.85);
+  color: var(--color-text);
+  padding: 0.55rem 0.65rem;
+  font-family: var(--font-mono);
+}
+
+.rsa-field textarea {
+  resize: vertical;
+  min-height: 5.5rem;
+  line-height: 1.6;
+}
+
+.rsa-field input::placeholder,
+.rsa-field textarea::placeholder {
+  color: var(--color-text-muted);
+  opacity: 1;
+}
+
+.rsa-field-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: rgba(13, 17, 23, 0.85);
+  color: var(--color-text-muted);
+  padding: 0.3rem 0.75rem;
+  font-size: 0.78rem;
+  text-transform: none;
+  letter-spacing: normal;
+  white-space: nowrap;
+  transition: color var(--transition), border-color var(--transition), background var(--transition);
+}
+
+.rsa-field-buttons {
+  display: inline-flex;
+  gap: 0.4rem;
+}
+
+.rsa-field-action:hover:not(:disabled) {
+  color: var(--color-accent);
+  border-color: rgba(88, 166, 255, 0.4);
+  background: rgba(88, 166, 255, 0.08);
+}
+
+.rsa-field-action:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.rsa-field-note {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  text-transform: none;
+  letter-spacing: normal;
+  text-align: right;
+}
+
+.rsa-field-note.is-ok {
+  color: var(--color-success);
+}
+
+.rsa-field-note.is-bad {
+  color: var(--color-danger);
+}
+
+/* ── Keys tab ───────────────────────────────────────────────── */
+.rsa-keys {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+}
+
+.rsa-keys-column {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  min-width: 0;
+}
+
+.rsa-randomize {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  border: 1px solid rgba(88, 166, 255, 0.4);
+  border-radius: 999px;
+  background: rgba(88, 166, 255, 0.12);
+  color: var(--color-accent);
+  padding: 0.5rem 1.1rem;
+  font-size: 0.85rem;
+  transition: background var(--transition), border-color var(--transition);
+}
+
+.rsa-randomize:hover {
+  border-color: rgba(88, 166, 255, 0.65);
+  background: rgba(88, 166, 255, 0.22);
+}
+
+.rsa-derived {
+  display: grid;
+  gap: 0.4rem;
+  margin: 0;
+}
+
+.rsa-derived-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: var(--color-surface);
+}
+
+.rsa-derived-row dt {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  flex-shrink: 0;
+}
+
+.rsa-derived-row dd {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--color-text);
+  word-break: break-all;
+  text-align: right;
+}
+
+.rsa-derivation summary {
+  font-size: 0.8rem;
+  color: var(--color-accent);
+  cursor: pointer;
+  user-select: none;
+}
+
+.rsa-derivation summary:hover {
+  text-decoration: underline;
+}
+
+.rsa-derivation[open] summary {
+  margin-bottom: 0.6rem;
+}
+
+/* ── Encrypt / Decrypt tabs ─────────────────────────────────── */
+.rsa-tool-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+  align-items: start;
+}
+
+.rsa-tool-column {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  min-width: 0;
+}
+
+.rsa-key-display {
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  text-align: left;
+  width: 100%;
+  padding: 0.55rem 0.65rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: var(--color-surface);
+  color: var(--color-text);
+  word-break: break-all;
+  line-height: 1.6;
+  cursor: pointer;
+  transition: border-color var(--transition);
+}
+
+.rsa-key-display:hover {
+  border-color: rgba(88, 166, 255, 0.4);
+}
+
+.rsa-key-fields {
+  display: grid;
+  grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+  gap: 0.75rem;
+}
+
+.rsa-steps-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.rsa-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.rsa-step-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  min-width: 0;
+}
+
+.rsa-step-explain {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.rsa-step-num {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  flex-shrink: 0;
+  align-self: flex-start;
+}
+
+.rsa-step-text {
+  font-size: 0.9rem;
+  color: var(--color-text);
+}
+
+.rsa-step-text code {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+  color: var(--color-accent);
+}
+
+.rsa-step-detail {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+  padding: 0.5rem 0.65rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: var(--color-surface);
+  word-break: break-word;
+  line-height: 1.6;
+  max-height: 6.5rem;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(88, 166, 255, 0.4) rgba(13, 17, 23, 0.65);
+}
+
+.rsa-step-detail::-webkit-scrollbar {
+  width: 9px;
+}
+
+.rsa-step-detail::-webkit-scrollbar-track {
+  background: rgba(13, 17, 23, 0.65);
+  border-radius: 999px;
+}
+
+.rsa-step-detail::-webkit-scrollbar-thumb {
+  background: rgba(88, 166, 255, 0.35);
+  border-radius: 999px;
+}
+
+.rsa-output-box {
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  padding: 0.75rem 0.9rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  word-break: break-all;
+  line-height: 1.6;
+  max-height: 8rem;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(88, 166, 255, 0.4) rgba(13, 17, 23, 0.65);
+}
+
+.rsa-output-box::-webkit-scrollbar {
+  width: 9px;
+}
+
+.rsa-output-box::-webkit-scrollbar-track {
+  background: rgba(13, 17, 23, 0.65);
+  border-radius: 999px;
+}
+
+.rsa-output-box::-webkit-scrollbar-thumb {
+  background: rgba(88, 166, 255, 0.35);
+  border-radius: 999px;
+}
+
+.rsa-output-box.is-cipher {
+  border-color: color-mix(in srgb, var(--color-warning) 30%, var(--color-border));
+  background: color-mix(in srgb, var(--color-warning) 7%, var(--color-surface));
+}
+
+.rsa-output-box.is-plain {
+  border-color: color-mix(in srgb, var(--color-success) 30%, var(--color-border));
+  background: color-mix(in srgb, var(--color-success) 7%, var(--color-surface));
+  white-space: pre-wrap;
+}
+
+.rsa-output-box.is-empty {
+  color: var(--color-text-muted);
+}
+
+.rsa-error {
+  font-size: 0.8rem;
+  color: var(--color-danger);
+  line-height: 1.5;
+  margin: 0;
+}
+
 /* ── Stub tab ───────────────────────────────────────────────── */
 .rsa-stub {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 0.75rem;
-  padding: 3rem 0;
 }
 
 .rsa-stub-badge {
@@ -368,7 +722,18 @@
 }
 
 /* ── Responsive ─────────────────────────────────────────────── */
+@media (max-width: 860px) {
+  .rsa-keys,
+  .rsa-tool-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 @media (max-width: 600px) {
+  .rsa-key-fields {
+    grid-template-columns: 1fr;
+  }
+
   .rsa-hero-title {
     font-size: 1.5rem;
   }
